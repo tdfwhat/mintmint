@@ -1,4 +1,4 @@
-import Module from '~/modules/home'
+import Module from '~/modules/book-and-picture'
 
 export const dynamic = 'force-static'
 

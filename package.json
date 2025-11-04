@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@portabletext/react": "^4.0.3",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.12.0",
     "next": "16.0.1",
@@ -26,9 +27,9 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
     "tailwindcss": "^4",
+    "tailwindcss-language-server": "^0.0.1",
     "typescript": "^5",
     "typescript-language-server": "^5.1.0",
-    "vscode-langservers-extracted": "^4.10.0",
-    "tailwindcss-language-server": "^0.0.1"
+    "vscode-langservers-extracted": "^4.10.0"
   }
 }

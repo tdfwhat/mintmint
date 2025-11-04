@@ -10,7 +10,13 @@ export const event = defineType({
       title: 'Projects',
       type: 'array',
       of: [
-        {type: 'reference', to: [{type: 'project'}]},
+        {
+          type: 'reference',
+          to: [{type: 'project'}],
+          options: {
+            filter: 'projectType == "event"',
+          },
+        },
       ],
     }),
   ],

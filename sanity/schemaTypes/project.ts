@@ -19,6 +19,21 @@ export const project = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'projectType',
+      title: 'Project Type',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Film', value: 'film'},
+          {title: 'Event', value: 'event'},
+          {title: 'Casting', value: 'casting'},
+          {title: 'Book and Picture', value: 'book-and-picture'},
+        ],
+        layout: 'radio',
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'mainImage',
       title: 'Main Image',
       type: 'image',

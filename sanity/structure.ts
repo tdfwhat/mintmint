@@ -2,7 +2,7 @@ import type { StructureResolver } from 'sanity/structure'
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) => {
-  const singletonTypes = ['home', 'film', 'event', 'casting', 'book', 'contact', 'footer'] as const
+  const singletonTypes = ['home', 'film', 'event', 'casting', 'book-and-picture', 'contact', 'footer'] as const
 
   const singletonItems = [
     S.listItem()
@@ -42,13 +42,13 @@ export const structure: StructureResolver = (S) => {
           .documentId('casting')
       ),
     S.listItem()
-      .title('Book')
-      .id('book')
+      .title('Book & Picture')
+      .id('book-and-picture')
       .child(
         S.editor()
-          .id('book')
-          .schemaType('book')
-          .documentId('book')
+          .id('book-and-picture')
+          .schemaType('book-and-picture')
+          .documentId('book-and-picture')
       ),
     S.listItem()
       .title('Contact')

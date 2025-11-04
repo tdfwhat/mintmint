@@ -1,8 +1,8 @@
 import {defineType, defineField} from 'sanity'
 
-export const film = defineType({
-  name: 'film',
-  title: 'Film',
+export const bookAndPicture = defineType({
+  name: 'book-and-picture',
+  title: 'Book & Picture',
   type: 'document',
   fields: [
     defineField({
@@ -14,7 +14,7 @@ export const film = defineType({
           type: 'reference',
           to: [{type: 'project'}],
           options: {
-            filter: 'projectType == "film"',
+            filter: 'projectType == "book-and-picture"',
           },
         },
       ],
@@ -22,7 +22,7 @@ export const film = defineType({
   ],
   preview: {
     prepare() {
-      return {title: 'Film'}
+      return {title: 'Book & Picture'}
     },
   },
 })

@@ -3,24 +3,66 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --green: #8dbe2f;
+  --yellow: #fdc92b;
+  --orange: #ff932f;
+  --blue: #007FC4;
+  --gray: #505050;
+  --main-color: var(--green);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+.theme-green { --main-color: var(--green); }
+.theme-yellow { --main-color: var(--yellow); }
+.theme-orange { --main-color: var(--orange); }
+.theme-blue { --main-color: var(--blue); }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes animation-dangle {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(30deg); }
+  40% { transform: rotate(-20deg); }
+  60% { transform: rotate(10deg); }
+  80% { transform: rotate(-5deg); }
+  100% { transform: rotate(0); }
+}
+
+.underline-decorated {
+  text-decoration-line: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 4px;
+  text-decoration-color: currentColor;
+  text-decoration-style: solid;
+}
+
+.dangle {
+  transform-origin: 50% 18%;
+  animation: animation-dangle 1.5s ease-in-out 1;
+}
+
+.text-chunk {
+  @apply flex flex-col gap-4
+}
+
+a {
+  @apply hover:opacity-50 transition-opacity duration-300
+}
+
+.text-chunk h1 {
+  @apply break-words font-black text-5xl text-(--main-color)
+}
+
+h1 {
+  font-family: system-ui, sans-serif;
+}
+
+p {
+  font-family: Avenir, "Avenir Next LT Pro", Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
 }

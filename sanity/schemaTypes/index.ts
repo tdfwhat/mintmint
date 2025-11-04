@@ -7,7 +7,7 @@ import { home } from './home'
 import { film } from './film'
 import { event } from './event'
 import { casting } from './casting'
-import { book } from './book'
+import { bookAndPicture } from './book-and-picture'
 import { contact } from './contact'
 import { footer } from './footer'
 
@@ -19,7 +19,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     film,
     event,
     casting,
-    book,
+    bookAndPicture,
     contact,
     footer
   ],

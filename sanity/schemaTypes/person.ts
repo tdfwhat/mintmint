@@ -12,6 +12,12 @@ export const person = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'avatar',
+      title: 'Avatar',
+      type: 'image',
+      options: {hotspot: true},
+    }),
+    defineField({
       name: 'contentSv',
       title: 'Content (Swedish)',
       type: 'array',
@@ -35,6 +41,6 @@ export const person = defineType({
     }),
   ],
   preview: {
-    select: {title: 'name'},
+    select: {title: 'name', media: 'avatar'},
   },
 })
