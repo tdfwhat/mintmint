@@ -62,6 +62,8 @@ export default function Hamburger({ locale, page, white = false }: { locale: str
       <nav
         className={`fixed inset-0 w-full h-full transform transition-transform duration-300 ease-in-out overflow-y-auto bg-(--main-color) ${isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
+        aria-label={textByLocale(locale, "Huvudmeny", "Main menu")}
+        aria-hidden={!isOpen}
       >
         <div className="flex flex-col items-center pt-36 min-h-full p-8 gap-8">
           <button
@@ -115,11 +117,11 @@ export default function Hamburger({ locale, page, white = false }: { locale: str
               {textByLocale(locale, "Kontakt", "Contact")}
             </Link>
 
-            <div className="flex gap-4 text-xl mt-8">
-              <Link href={pathByLocale('sv', path)} className={localeStyle("sv")}>
+            <div className="flex gap-4 text-xl mt-8" role="group" aria-label={textByLocale(locale, "Välj språk", "Choose language")}>
+              <Link href={pathByLocale('sv', path)} className={localeStyle("sv")} aria-label="Svenska" aria-current={locale === 'sv' ? 'page' : undefined}>
                 Sv
               </Link>
-              <Link href={pathByLocale('en', path)} className={localeStyle("en")}>
+              <Link href={pathByLocale('en', path)} className={localeStyle("en")} aria-label="English" aria-current={locale === 'en' ? 'page' : undefined}>
                 En
               </Link>
             </div>

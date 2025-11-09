@@ -39,7 +39,7 @@ function ExpandablePortableText({ locale, value }: { locale: string, value: any[
       <PortableText value={head} />
       <details className="flex flex-col space-y-4">
         <PortableText value={tail} />
-        <summary className="cursor-pointer flex w-fit self-center order-last custom-summary-label"></summary>
+        <summary className="cursor-pointer flex w-fit self-center order-last custom-summary-label" aria-label={showMore}></summary>
       </details>
       
       <style>{`
@@ -71,15 +71,15 @@ export default async function Casting({ locale }: { locale: string }) {
       <main className="mx-auto w-full max-w-5xl p-8 space-y-12 flex-1">
         <ProjectNav locale={locale} current="casting" />
 
-        <div className="text-chunk">
+        <section className="text-chunk" aria-label="Casting information">
           <Locale
             locale={locale}
             sv={<ExpandablePortableText locale={locale} value={contentSv} />}
             en={<ExpandablePortableText locale={locale} value={contentEn} />}
           />
-        </div>
+        </section>
 
-        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <section className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3" aria-label="Casting projects">
           {projects.map((project: any) => (
             <Img
               key={project.slug.current}
@@ -90,7 +90,7 @@ export default async function Casting({ locale }: { locale: string }) {
               label={project.title}
             />
           ))}
-        </div>
+        </section>
       </main>
 
       <Footer locale={locale} />

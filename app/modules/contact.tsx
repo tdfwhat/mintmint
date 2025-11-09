@@ -15,11 +15,11 @@ export default async function Contact({ locale }: { locale: string }) {
       <Header locale={locale} page="contact" />
 
       <main className="mx-auto w-full max-w-5xl p-8 space-y-12 flex-1">
-        <div className="flex flex-col space-y-8">
+        <section className="flex flex-col space-y-8">
           {people.map((person: any) => (
-            <div key={person.name} className="flex flex-col lg:flex-row even:lg:flex-row-reverse even:lg:text-right" >
+            <article key={person.name} className="flex flex-col lg:flex-row even:lg:flex-row-reverse even:lg:text-right" >
               <div className="max-w-sm lg:w-1/3">
-                <Img className="w-full" image={person.avatar} />
+                <Img className="w-full" image={person.avatar} alt={person.name} />
               </div>
 
               <div className="flex flex-col sm:w-full lg:w-1/2 py-4 lg:py-2 lg:px-8 space-y-2">
@@ -29,9 +29,9 @@ export default async function Contact({ locale }: { locale: string }) {
                   en={<PortableText value={person.contentEn} />}
                 />
               </div>
-            </div>
+            </article>
           ))}
-        </div>
+        </section>
       </main>
 
       <Footer locale={locale} />

@@ -19,7 +19,7 @@ export default async function Event({ locale }: { locale: string }) {
       <main className="mx-auto w-full max-w-5xl p-8 space-y-12 flex-1">
         <ProjectNav locale={locale} current="event" />
 
-        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <section className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3" aria-label="Event projects">
           {projects.map((project: any) => (
             <Img
               key={project.slug.current}
@@ -30,7 +30,7 @@ export default async function Event({ locale }: { locale: string }) {
               label={project.title}
             />
           ))}
-        </div>
+        </section>
       </main>
       
       <Footer locale={locale} />

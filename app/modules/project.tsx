@@ -25,28 +25,29 @@ export default async function Project({ locale, slug }: { locale: string, slug: 
         {videoUrl && false ? (
           <video className="w-full" autoPlay muted loop>
             <source src={videoUrl} />
+            <track kind="captions" />
           </video>
         ) : mainImage ? (
           <Img image={mainImage} alt={title} className="w-full" loading="eager" />
         ) : null}
 
-        <div className="mx-auto max-w-5xl p-8 space-y-12">
-          <div className="text-chunk">
+        <article className="mx-auto max-w-5xl p-8 space-y-12">
+          <header className="text-chunk">
             <h1 className="text-3xl font-bold">{title}</h1>
             <Locale locale={locale}
               sv={<PortableText value={descriptionSv} />}
               en={<PortableText value={descriptionEn} />}
             />
-          </div>
+          </header>
 
           {images && images.length > 0 && (
-            <div className="flex flex-wrap gap-4">
+            <section className="flex flex-wrap gap-4" aria-label="Project gallery">
               {images.map((image: any, index: number) => (
                 <Img key={index} image={image} skipDimensions zoomable alt={`${title} ${index + 1}`} className="h-48 cursor-pointer object-cover" />
               ))}
-            </div>
+            </section>
           )}
-        </div>
+        </article>
       </main>
 
       <Footer locale={locale} />

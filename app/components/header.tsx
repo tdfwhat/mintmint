@@ -16,7 +16,7 @@ export default function Header({ locale, page }: { locale: string, page: "home" 
     return (
       <div className="absolute w-full text-white">
         <header className="mx-auto max-w-5xl p-8 z-50 relative">
-          <nav className="flex items-center justify-center gap-8 relative">
+          <nav className="flex items-center justify-center gap-8 relative" aria-label={textByLocale(locale, "Huvudnavigering", "Main navigation")}>
             <div className="absolute left-1/2 top-0 -translate-x-1/2 flex justify-center w-36 h-36">
               <Logo locale={locale} className="min-w-36 w-36 min-h-36 h-36" white />
             </div>
@@ -24,9 +24,9 @@ export default function Header({ locale, page }: { locale: string, page: "home" 
             <div className="w-36 h-36" />
 
             <div className="hidden md:flex items-center ml-auto text-xl font-medium">
-              <div className="flex gap-2">
-                <Link href={pathByLocale('sv', path)} className={`${locale === 'sv' ? 'opacity-50' : ''}`}>Sv</Link>
-                <Link href={pathByLocale('en', path)} className={`${locale === 'en' ? 'opacity-50' : ''}`}>En</Link>
+              <div className="flex gap-2" role="group" aria-label={textByLocale(locale, "Välj språk", "Choose language")}>
+                <Link href={pathByLocale('sv', path)} className={`${locale === 'sv' ? 'opacity-50' : ''}`} aria-label="Svenska" aria-current={locale === 'sv' ? 'page' : undefined}>Sv</Link>
+                <Link href={pathByLocale('en', path)} className={`${locale === 'en' ? 'opacity-50' : ''}`} aria-label="English" aria-current={locale === 'en' ? 'page' : undefined}>En</Link>
               </div>
             </div>
 
@@ -39,7 +39,7 @@ export default function Header({ locale, page }: { locale: string, page: "home" 
 
   return (
     <header className="mx-auto w-full max-w-5xl p-8 z-40">
-      <nav className="flex items-center justify-between gap-8">
+      <nav className="flex items-center justify-between gap-8" aria-label={textByLocale(locale, "Huvudnavigering", "Main navigation")}>
         <Logo locale={locale} className="w-24 h-24" clickable />
 
         <div className="hidden md:flex items-center gap-24 text-xl font-medium">
@@ -49,9 +49,9 @@ export default function Header({ locale, page }: { locale: string, page: "home" 
             <Link className={page === "contact" ? "opacity-50" : ""} href={pathByLocale(locale, "/contact")}>{textByLocale(locale, "Kontakt", "Contact")}</Link>
           </div>
 
-          <div className="flex gap-2">
-              <Link href={pathByLocale('sv', path)} className={`${locale === 'sv' ? 'opacity-50' : ''}`}>Sv</Link>
-              <Link href={pathByLocale('en', path)} className={`${locale === 'en' ? 'opacity-50' : ''}`}>En</Link>
+          <div className="flex gap-2" role="group" aria-label={textByLocale(locale, "Välj språk", "Choose language")}>
+              <Link href={pathByLocale('sv', path)} className={`${locale === 'sv' ? 'opacity-50' : ''}`} aria-label="Svenska" aria-current={locale === 'sv' ? 'page' : undefined}>Sv</Link>
+              <Link href={pathByLocale('en', path)} className={`${locale === 'en' ? 'opacity-50' : ''}`} aria-label="English" aria-current={locale === 'en' ? 'page' : undefined}>En</Link>
           </div>
         </div>
 

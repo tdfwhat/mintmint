@@ -41,18 +41,18 @@ export default async function Footer({ locale, }: { locale: string }) {
             {emailAddress && (
               <div className="flex flex-col">
                 <span>Email</span>
-                <span>{emailAddress}</span>
+                <a href={`mailto:${emailAddress}`} className="hover:underline">{emailAddress}</a>
               </div>
             )}
           </div>
         </div>
 
         <div className="flex gap-8 items-center">
-          <a href={instagram} aria-label="Instagram">
+          <a href={instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
             <Instagram />
           </a>
 
-          <a href={facebook} aria-label="Facebook">
+          <a href={facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer">
             <Facebook />
           </a>
         </div>

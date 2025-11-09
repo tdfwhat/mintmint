@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { pathByLocale } from "~/components/helpers/helpers"
+import { pathByLocale, textByLocale } from "~/components/helpers/helpers"
 
 
 export default function Logo({ 
@@ -19,14 +19,15 @@ export default function Logo({
   logoClassName += dangle ? " dangle" : "";
 
   const logo = (
-    <svg className={logoClassName} viewBox="0 0 150 150" style={{ color: (white ? "white" : "var(--main-color)") }}>
+    <svg className={logoClassName} viewBox="0 0 150 150" style={{ color: (white ? "white" : "var(--main-color)") }} role="img" aria-label="Mint logotyp">
+      <title>Mint</title>
       <path d="M75 0C116.421 0 150 33.5786 150 75C150 116.421 116.421 150 75 150C33.5786 150 0 116.421 0 75C0 33.5786 33.5786 0 75 0ZM26 88V117H31V102L36 113H40L45 102V117H50V88H45L38 105L31 88H26ZM59.5 88V93H63.5V112H59.5V117H72.5V112H68.5V93H72.5V88H59.5ZM82 88V117H87V99L97 117H102V88H97V106L87 88H82ZM109 88V93H117V117H122V93H130V88H109ZM75 10C63.402 10 54 19.402 54 31C54 42.598 63.402 52 75 52C86.598 52 96 42.598 96 31C96 19.402 86.598 10 75 10Z" />
     </svg>
   );
 
   if (clickable && locale) {
     return (
-      <Link href={pathByLocale(locale, "/")}>
+      <Link href={pathByLocale(locale, "/")} aria-label={textByLocale(locale, "Gå till startsidan", "Go to home page")}>
         {logo}
       </Link>
     )
