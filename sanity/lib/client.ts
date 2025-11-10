@@ -15,7 +15,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import crypto from 'crypto'
 
-const base = createClient({ projectId, dataset, apiVersion, useCdn: true })
+const base = createClient({ projectId, dataset, apiVersion, useCdn: false })
 const cacheDir = path.join(process.cwd(), '.tmp', 'sanity-cache')
 const disabled = process.env.SANITY_CACHE === 'off' // optional flag
 
@@ -27,6 +27,8 @@ function key(query: string, params?: Record<string, unknown>) {
 }
 
 async function readCache<T>(file: string): Promise<T | null> {
+  console.log('Reading cache file:', file)
+
   try {
     const raw = await fs.readFile(file, 'utf8')
     return JSON.parse(raw) as T

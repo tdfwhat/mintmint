@@ -16,6 +16,7 @@ export const person = defineType({
       title: 'Avatar',
       type: 'image',
       options: {hotspot: true},
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'contentSv',
@@ -27,6 +28,7 @@ export const person = defineType({
           {title: 'Heading', value: 'h1'},
         ],
       }],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'contentEn',
@@ -38,6 +40,7 @@ export const person = defineType({
           {title: 'Heading', value: 'h1'},
         ],
       }],
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

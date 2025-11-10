@@ -20,7 +20,7 @@ export default async function Event({ locale }: { locale: string }) {
         <ProjectNav locale={locale} current="event" />
 
         <section className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3" aria-label="Event projects">
-          {projects.map((project: any) => (
+          {projects?.map((project: any) => (
             <Img
               key={project.slug.current}
               image={project.mainImage}
@@ -28,6 +28,8 @@ export default async function Event({ locale }: { locale: string }) {
               className="w-full h-48 object-cover"
               link={pathByLocale(locale, `/project/${project.slug.current}`)}
               label={project.title}
+              maxWidth={800}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             />
           ))}
         </section>

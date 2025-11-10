@@ -11,6 +11,7 @@ export const home = defineType({
       title: 'Main Image',
       type: 'image',
       options: {hotspot: true},
+      validation: (Rule) => Rule.required(),
     }),
     // What we do (Swedish)
     defineField({
@@ -42,24 +43,28 @@ export const home = defineType({
       title: 'Film Image',
       type: 'image',
       options: {hotspot: true},
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'eventImage',
       title: 'Event Image',
       type: 'image',
       options: {hotspot: true},
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'castingImage',
       title: 'Casting Image',
       type: 'image',
       options: {hotspot: true},
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'bookImage',
       title: 'Book Image',
       type: 'image',
       options: {hotspot: true},
+      validation: (Rule) => Rule.required(),
     }),
     // Who are we image
     defineField({
@@ -67,6 +72,7 @@ export const home = defineType({
       title: 'Who Are We Image',
       type: 'image',
       options: {hotspot: true},
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

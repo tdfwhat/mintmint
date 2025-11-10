@@ -39,7 +39,7 @@ function ExpandablePortableText({ locale, value }: { locale: string, value: any[
       <PortableText value={head} />
       <details className="flex flex-col space-y-4">
         <PortableText value={tail} />
-        <summary className="cursor-pointer flex w-fit self-center order-last custom-summary-label" aria-label={showMore}></summary>
+        <summary className="cursor-pointer flex w-fit self-center order-last custom-summary-label hover:opacity-50 transition-opacity duration-300" aria-label={showMore}></summary>
       </details>
       
       <style>{`
@@ -80,7 +80,7 @@ export default async function Casting({ locale }: { locale: string }) {
         </section>
 
         <section className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3" aria-label="Casting projects">
-          {projects.map((project: any) => (
+          {projects?.map((project: any) => (
             <Img
               key={project.slug.current}
               image={project.mainImage}
@@ -88,6 +88,8 @@ export default async function Casting({ locale }: { locale: string }) {
               className="w-full h-48 object-cover"
               link={pathByLocale(locale, `/project/${project.slug.current}`)}
               label={project.title}
+              maxWidth={800}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             />
           ))}
         </section>

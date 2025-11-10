@@ -4,7 +4,6 @@ import Module from '~/modules/home'
 export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
-  title: 'Home',
   alternates: {
     canonical: '/en',
     languages: {

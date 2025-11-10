@@ -2,6 +2,8 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
+import imageUrlBuilder from '@sanity/image-url'
+import { dataset, projectId } from '@/sanity/env'
 
 type ImgProps = {
   asset: {
@@ -15,6 +17,8 @@ type ImgProps = {
   }
 }
 
+const builder = imageUrlBuilder({ projectId, dataset })
+
 export default function Img({
   image,
   className = "",
@@ -24,6 +28,8 @@ export default function Img({
   label,
   skipDimensions = false,
   zoomable = false,
+  maxWidth,
+  sizes,
 }: {
   image: ImgProps,
   className?: string,
@@ -33,6 +39,8 @@ export default function Img({
   label?: string,
   skipDimensions?: boolean,
   zoomable?: boolean,
+  maxWidth?: number,
+  sizes?: string,
 }) {
   const [isZoomed, setIsZoomed] = useState(false)
 
@@ -54,9 +62,36 @@ export default function Img({
     }
   }, [isZoomed])
 
+  const getImageUrl = (width?: number) => {
+    let urlBuilder = builder.image(image)
+    if (width) {
+      urlBuilder = urlBuilder.width(width).auto('format').quality(85)
+    }
+    return urlBuilder.url()
+  }
+
+  const generateSrcSet = () => {
+    if (!maxWidth) return undefined
+    
+    const widths = [
+      Math.round(maxWidth * 0.5),
+      maxWidth,
+      Math.round(maxWidth * 1.5),
+      Math.round(maxWidth * 2)
+    ].filter((w, i, arr) => arr.indexOf(w) === i)
+    
+    return widths.map(w => `${getImageUrl(w)} ${w}w`).join(', ')
+  }
+
+  const srcUrl = maxWidth ? getImageUrl(maxWidth) : image.asset.url
+  const srcSet = generateSrcSet()
+  const sizesAttr = sizes || (maxWidth ? `(max-width: ${maxWidth}px) 100vw, ${maxWidth}px` : undefined)
+
   const img = (
     <img
-      src={image.asset.url}
+      src={srcUrl}
+      srcSet={srcSet}
+      sizes={sizesAttr}
       className={`${className}${zoomable ? " fade cursor-pointer" : ""}`}
       alt={alt}
       width={skipDimensions ? undefined : image.asset.metadata.dimensions.width}
@@ -70,7 +105,7 @@ export default function Img({
       <Link href={link} className="relative block group overflow-hidden" aria-label={label}>
         {img}
         <div className="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" aria-hidden="true">
-          <span className="text-white text-3xl font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.5)] [text-stroke:2px_rgba(0,0,0,0.5)]">{label}</span>
+          <span className="text-white text-3xl text-center px-4 font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.5)] [text-stroke:2px_rgba(0,0,0,0.5)]">{label}</span>
         </div>
       </Link>
     )
@@ -109,6 +144,7 @@ export default function Img({
               src={image.asset.url}
               alt={alt}
               className="max-w-full max-h-full"
+              loading="eager"
             />
           </div>
         )}

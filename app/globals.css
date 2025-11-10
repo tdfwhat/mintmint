@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fafafa;
   --foreground: #171717;
   --green: #8dbe2f;
   --yellow: #fdc92b;
@@ -25,46 +25,23 @@ body {
   color: var(--foreground);
 }
 
-@keyframes animation-dangle {
-  0% { transform: rotate(0deg); }
-  20% { transform: rotate(30deg); }
-  40% { transform: rotate(-20deg); }
-  60% { transform: rotate(10deg); }
-  80% { transform: rotate(-5deg); }
-  100% { transform: rotate(0); }
+h1 {
+  font-family: system-ui, sans-serif;
 }
 
-.underline-decorated {
-  text-decoration-line: underline;
-  text-underline-offset: 10px;
-  text-decoration-thickness: 4px;
-  text-decoration-color: currentColor;
-  text-decoration-style: solid;
-}
-
-.dangle {
-  transform-origin: 50% 18%;
-  animation: animation-dangle 1.5s ease-in-out 1;
-}
-
-.text-chunk {
-  @apply flex flex-col gap-4
+p {
+  font-family: Avenir, "Avenir Next LT Pro", Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
 }
 
 a {
   @apply hover:opacity-50 transition-opacity duration-300
 }
 
-/* Focus styles for keyboard navigation */
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible,
-[role="button"]:focus-visible {
+a:focus-visible, button:focus-visible, summary:focus-visible, [role="button"]:focus-visible {
   outline: 3px solid var(--main-color);
   outline-offset: 2px;
 }
 
-/* Skip to content link */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -80,14 +57,60 @@ summary:focus-visible,
   top: 0;
 }
 
-.text-chunk h1 {
+.text-chunk {
+  @apply flex flex-col gap-4
+}
+
+.text-chunk > p {
+  @apply break-words text-lg leading-relaxed
+}
+
+.text-chunk a {
+  @apply text-gray-700
+}
+
+.text-chunk > h1, 
+.text-chunk > h2 {
   @apply break-words font-black text-5xl text-(--main-color)
 }
 
-h1 {
-  font-family: system-ui, sans-serif;
+.underline-decorated {
+  position: relative;
+  text-decoration: none;
 }
 
-p {
-  font-family: Avenir, "Avenir Next LT Pro", Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
+.underline-decorated::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 4px;
+  background-color: currentColor;
+  border-radius: 2px;
+}
+
+@keyframes animation-dangle {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(30deg); }
+  40% { transform: rotate(-20deg); }
+  60% { transform: rotate(10deg); }
+  80% { transform: rotate(-5deg); }
+  100% { transform: rotate(0); }
+}
+
+.dangle {
+  transform-origin: 50% 18%;
+  animation: animation-dangle 1.5s ease-in-out 1;
+}
+
+@keyframes animation-dangle-forever {
+  0% { transform: rotate(8deg); }
+  50% { transform: rotate(-8deg); }
+  100% { transform: rotate(8deg); }
+}
+
+.dangle-forever {
+  transform-origin: 50% 18%;
+  animation: animation-dangle-forever 3s ease-in-out infinite;
 }

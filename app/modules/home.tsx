@@ -26,7 +26,7 @@ export default async function Home({ locale }: { locale: string }) {
       <div className={'relative w-full h-screen'}>
         <Header locale={locale} page="home" />
 
-        <Img image={mainImage} alt={textByLocale(locale, "Huvudbild", "Main image")} className="w-full h-full object-cover" loading="eager" />
+        <Img image={mainImage} alt={textByLocale(locale, "Huvudbild", "Main image")} className="w-full h-full object-cover" loading="eager" maxWidth={2560} sizes="100vw" />
 
         <div className="absolute inset-0 flex items-center justify-center gap-8 text-white text-3xl font-semibold">
           <Link
@@ -59,10 +59,10 @@ export default async function Home({ locale }: { locale: string }) {
         </section>
 
         <section className="grid gap-4 md:grid-cols-1 lg:grid-cols-4" aria-label={textByLocale(locale, "Våra tjänster", "Our services")}>
-          <Img image={filmImage} link={pathByLocale(locale, "/project/film")} label="Film" className="h-96 w-full object-cover" />
-          <Img image={eventImage} link={pathByLocale(locale, "/project/event")} label="Event" className="h-96 w-full object-cover" />
-          <Img image={castingImage} link={pathByLocale(locale, "/project/casting")} label="Casting" className="h-96 w-full object-cover" />
-          <Img image={bookImage} link={pathByLocale(locale, "/project/book-and-picture")} label={textByLocale(locale, "Bok & Bild", "Book & Picture")} className="h-96 w-full object-cover" />
+          <Img image={filmImage} link={pathByLocale(locale, "/project/film")} label="Film" className="h-96 w-full object-cover" maxWidth={800} sizes="(max-width: 1024px) 100vw, 25vw" />
+          <Img image={eventImage} link={pathByLocale(locale, "/project/event")} label="Event" className="h-96 w-full object-cover" maxWidth={800} sizes="(max-width: 1024px) 100vw, 25vw" />
+          <Img image={castingImage} link={pathByLocale(locale, "/project/casting")} label="Casting" className="h-96 w-full object-cover" maxWidth={800} sizes="(max-width: 1024px) 100vw, 25vw" />
+          <Img image={bookImage} link={pathByLocale(locale, "/project/book-and-picture")} label={textByLocale(locale, "Bok & Bild", "Book & Picture")} className="h-96 w-full object-cover" maxWidth={800} sizes="(max-width: 1024px) 100vw, 25vw" />
         </section>
 
         <section className="text-chunk" aria-label={textByLocale(locale, "Om oss", "About us")}>
@@ -72,7 +72,7 @@ export default async function Home({ locale }: { locale: string }) {
           />
         </section>
 
-        <Img image={whoAreWeImage} link={pathByLocale(locale, "/contact")} label={textByLocale(locale, "Kontakt", "Contact")} />
+        <Img image={whoAreWeImage} link={pathByLocale(locale, "/contact")} label={textByLocale(locale, "Kontakt", "Contact")} maxWidth={1600} sizes="(max-width: 1280px) 100vw, 1280px" />
       </main>
 
       <Footer locale={locale} />

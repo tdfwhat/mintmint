@@ -38,6 +38,7 @@ export const project = defineType({
       title: 'Main Image',
       type: 'image',
       options: {hotspot: true},
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'videoUrl',

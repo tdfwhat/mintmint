@@ -2,7 +2,7 @@ import { client } from '@/sanity/lib/client'
 import { filmQuery } from '@/sanity/lib/queries'
 
 import Header from "~/components/header"
-import ProjectNav from "@/app/components/project-nav"
+import ProjectNav from "~/components/project-nav"
 import Img from "~/components/img"
 import Footer from "~/modules/footer"
 import { pathByLocale } from '~/components/helpers/helpers'
@@ -18,7 +18,7 @@ export default async function Film({ locale }: { locale: string }) {
         <ProjectNav locale={locale} current="film" />
 
         <section className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3" aria-label="Film projects">
-          {projects.map((project: any) => (
+          {projects?.map((project: any) => (
             <Img
               key={project.slug.current}
               image={project.mainImage}
@@ -26,6 +26,8 @@ export default async function Film({ locale }: { locale: string }) {
               className="w-full h-48 object-cover"
               link={pathByLocale(locale, `/project/${project.slug.current}`)}
               label={project.title}
+              maxWidth={800}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             />
           ))}
         </section>

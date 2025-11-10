@@ -31,7 +31,7 @@ export const projectQuery = `
 `
 
 export const bookQuery = `
-*[_type == "book"][0] {
+*[_type == "book-and-picture"][0] {
   projects[]-> {
     title,
     slug,
