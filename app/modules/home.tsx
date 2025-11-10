@@ -58,11 +58,11 @@ export default async function Home({ locale }: { locale: string }) {
           />
         </section>
 
-        <section className="grid gap-4 md:grid-cols-1 lg:grid-cols-4" aria-label={textByLocale(locale, "Våra tjänster", "Our services")}>
+        <section className="grid gap-4 md:grid-cols-1 lg:grid-cols-3" aria-label={textByLocale(locale, "Våra tjänster", "Our services")}>
           <Img image={filmImage} link={pathByLocale(locale, "/project/film")} label="Film" className="h-96 w-full object-cover" maxWidth={800} sizes="(max-width: 1024px) 100vw, 25vw" />
           <Img image={eventImage} link={pathByLocale(locale, "/project/event")} label="Event" className="h-96 w-full object-cover" maxWidth={800} sizes="(max-width: 1024px) 100vw, 25vw" />
           <Img image={castingImage} link={pathByLocale(locale, "/project/casting")} label="Casting" className="h-96 w-full object-cover" maxWidth={800} sizes="(max-width: 1024px) 100vw, 25vw" />
-          <Img image={bookImage} link={pathByLocale(locale, "/project/book-and-picture")} label={textByLocale(locale, "Bok & Bild", "Book & Picture")} className="h-96 w-full object-cover" maxWidth={800} sizes="(max-width: 1024px) 100vw, 25vw" />
+          {/* <Img image={bookImage} link={pathByLocale(locale, "/project/book-and-picture")} label={textByLocale(locale, "Bok & Bild", "Book & Picture")} className="h-96 w-full object-cover" maxWidth={800} sizes="(max-width: 1024px) 100vw, 25vw" /> */}
         </section>
 
         <section className="text-chunk" aria-label={textByLocale(locale, "Om oss", "About us")}>
