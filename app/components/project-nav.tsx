@@ -10,7 +10,7 @@ export default function ProjectNav({ locale, current }: { locale: string, curren
       <Link className={style("film")} href={pathByLocale(locale, "/project/film")} aria-current={current === "film" ? "page" : undefined}>Film</Link>
       <Link className={style("event")} href={pathByLocale(locale, "/project/event")} aria-current={current === "event" ? "page" : undefined}>Event</Link>
       <Link className={style("casting")} href={pathByLocale(locale, "/project/casting")} aria-current={current === "casting" ? "page" : undefined}>Casting</Link>
-      <Link className={style("book-and-picture")} href={pathByLocale(locale, "/project/book-and-picture")} aria-current={current === "book-and-picture" ? "page" : undefined}>{textByLocale(locale, "Bok & Bild", "Book & Picture")}</Link>
+      {/* <Link className={style("book-and-picture")} href={pathByLocale(locale, "/project/book-and-picture")} aria-current={current === "book-and-picture" ? "page" : undefined}>{textByLocale(locale, "Bok & Bild", "Book & Picture")}</Link> */}
     </nav >
   )
 }

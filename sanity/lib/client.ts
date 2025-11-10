@@ -27,7 +27,7 @@ function key(query: string, params?: Record<string, unknown>) {
 }
 
 async function readCache<T>(file: string): Promise<T | null> {
-  console.log('Reading cache file:', file)
+  // console.log('Reading cache file:', file)
 
   try {
     const raw = await fs.readFile(file, 'utf8')
