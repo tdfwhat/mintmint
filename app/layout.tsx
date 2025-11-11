@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={`antialiased flex flex-col min-h-screen`}>
+      <body className={`antialiased flex flex-col min-h-screen min-w-[100vw] overflow-x-hidden`}>
         {children}
       </body>
     </html>
