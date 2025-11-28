@@ -1,17 +1,24 @@
 'use client'
 
-import Img from '~/components/img' // adjust path as needed
+import { useState } from 'react'
+import Img from '~/components/img'
 
-interface VideoWithFallbackProps {
+type VideoWithFallbackProps = {
   videoUrl: string
   mainImage: any
   title: string
 }
 
 export default function VideoWithFallback({ videoUrl, mainImage, title }: VideoWithFallbackProps) {
+  const [videoFailed, setVideoFailed] = useState(false);
+  const modifiedVideoUrl = videoUrl?.replace('mint-ab.se/media/', 'mint-ab.se.linux15.unoeuro-server.com/media/');
+  
+  const showVideo = videoUrl && !videoFailed;
+  const showImage = !videoUrl || videoFailed;
+
   return (
     <>
-      {mainImage && (
+      {showImage && mainImage && (
         <Img 
           image={mainImage} 
           alt={title} 
@@ -21,19 +28,15 @@ export default function VideoWithFallback({ videoUrl, mainImage, title }: VideoW
           sizes="100vw" 
         />
       )}
-      {videoUrl && (
+      {showVideo && (
         <video 
-          className="w-full hidden" 
+          className="w-full" 
           autoPlay 
           muted 
           loop
-          onLoadedData={(e) => {
-            e.currentTarget.style.display = 'block';
-            const img = e.currentTarget.previousElementSibling;
-            if (img) (img as HTMLElement).style.display = 'none';
-          }}
+          onError={() => setVideoFailed(true)}
         >
-          <source src={videoUrl} />
+          <source src={modifiedVideoUrl} />
           <track kind="captions" />
         </video>
       )}
