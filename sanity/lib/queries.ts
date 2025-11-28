@@ -37,7 +37,9 @@ export const bookQuery = `
     slug,
     projectType,
     mainImage { asset -> { _id, url, metadata { dimensions { width, height } } } },
-  }
+  },
+  contentSv[],
+  contentEn[]
 }
 `
 

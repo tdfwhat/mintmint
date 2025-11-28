@@ -5,12 +5,11 @@ import Header from "~/components/header"
 import ProjectNav from "@/app/components/project-nav"
 import Img from "~/components/img"
 import Footer from "~/modules/footer"
-import { pathByLocale } from '~/components/helpers/helpers'
+import { pathByLocale, Locale, ExpandablePortableText } from '~/components/helpers/helpers'
 
 export default async function Book({ locale }: { locale: string }) {
   const theme = "theme-blue"
-
-  const { projects } = await client.fetch(bookQuery)
+  const { projects, contentSv, contentEn } = await client.fetch(bookQuery)
 
   return (
     <div className={`${theme} flex flex-col min-h-screen`}>
@@ -18,6 +17,16 @@ export default async function Book({ locale }: { locale: string }) {
       
       <main className="mx-auto w-full max-w-5xl p-8 space-y-12 flex-1">
         <ProjectNav locale={locale} current="book-and-picture" />
+
+        {((locale === 'sv' && !!contentSv) || (locale === 'en' && !!contentEn)) && (
+          <section className="text-chunk" aria-label="Casting information">
+            <Locale
+              locale={locale}
+              sv={<ExpandablePortableText locale={locale} value={contentSv} />}
+              en={<ExpandablePortableText locale={locale} value={contentEn} />}
+            />
+          </section>
+        )}
 
         <section className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3" aria-label="Book and picture projects">
           {projects?.map((project: any) => (

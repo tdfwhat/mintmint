@@ -19,6 +19,28 @@ export const bookAndPicture = defineType({
         },
       ],
     }),
+    defineField({
+      name: 'contentSv',
+      title: 'Content (Swedish)',
+      type: 'array',
+      of: [{
+        type: 'block',
+        styles: [
+          {title: 'Heading', value: 'h1'},
+        ],
+      }],
+    }),
+    defineField({
+      name: 'contentEn',
+      title: 'Content (English)',
+      type: 'array',
+      of: [{
+        type: 'block',
+        styles: [
+          {title: 'Heading', value: 'h1'},
+        ],
+      }],
+    }),
   ],
   preview: {
     prepare() {

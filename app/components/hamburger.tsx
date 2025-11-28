@@ -103,12 +103,12 @@ export default function Hamburger({ locale, page, white = false }: { locale: str
               Casting
             </Link>
 
-            {/* <Link */}
-            {/*   className={currentStyle("book-and-picture")} */}
-            {/*   href={pathByLocale(locale, "/project/book-and-picture")} */}
-            {/* > */}
-            {/*    {textByLocale(locale, "Bok & Bild", "Book & Picture")} */}
-            {/* </Link> */}
+            <Link
+              className={currentStyle("book-and-picture")}
+              href={pathByLocale(locale, "/project/book-and-picture")}
+            >
+               {textByLocale(locale, "Bok & Bild", "Book & Picture")}
+            </Link>
 
             <Link
               className={currentStyle("contact")}
