@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://media.mint-ab.se/*"
+  to = "http://mint-ab.se.linux15.unoeuro-server.com/:splat"
+  status = 200
+  force = true

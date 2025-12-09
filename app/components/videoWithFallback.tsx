@@ -11,7 +11,7 @@ type VideoWithFallbackProps = {
 
 export default function VideoWithFallback({ videoUrl, mainImage, title }: VideoWithFallbackProps) {
   const [videoFailed, setVideoFailed] = useState(false);
-  const modifiedVideoUrl = videoUrl?.replace('mint-ab.se/media/', 'mint-ab.se.linux15.unoeuro-server.com/media/');
+  const modifiedVideoUrl = videoUrl?.replace('mint-ab.se/media/', 'media.mint-ab.se/media/')
   
   const showVideo = videoUrl && !videoFailed;
   const showImage = !videoUrl || videoFailed;
@@ -28,6 +28,7 @@ export default function VideoWithFallback({ videoUrl, mainImage, title }: VideoW
           sizes="100vw" 
         />
       )}
+
       {showVideo && (
         <video 
           className="w-full" 
