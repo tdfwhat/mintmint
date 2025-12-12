@@ -1,11 +1,12 @@
 import { client } from '@/sanity/lib/client'
 import { bookQuery } from '@/sanity/lib/queries'
+import { PortableText } from 'next-sanity'
 
 import Header from "~/components/header"
 import ProjectNav from "@/app/components/project-nav"
 import Img from "~/components/img"
 import Footer from "~/modules/footer"
-import { pathByLocale, Locale, ExpandablePortableText } from '~/components/helpers/helpers'
+import { pathByLocale, Locale } from '~/components/helpers/helpers'
 
 export default async function Book({ locale }: { locale: string }) {
   const theme = "theme-blue"
@@ -22,8 +23,8 @@ export default async function Book({ locale }: { locale: string }) {
           <section className="text-chunk" aria-label="Casting information">
             <Locale
               locale={locale}
-              sv={<ExpandablePortableText locale={locale} value={contentSv} />}
-              en={<ExpandablePortableText locale={locale} value={contentEn} />}
+              sv={<PortableText value={contentSv} />}
+              en={<PortableText value={contentEn} />}
             />
           </section>
         )}

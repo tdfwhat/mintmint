@@ -11,7 +11,6 @@ type VideoWithFallbackProps = {
 
 export default function VideoWithFallback({ videoUrl, mainImage, title }: VideoWithFallbackProps) {
   const [videoFailed, setVideoFailed] = useState(false);
-  const modifiedVideoUrl = videoUrl?.replace('mint-ab.se/media/', 'media.mint-ab.se/media/')
   
   const showVideo = videoUrl && !videoFailed;
   const showImage = !videoUrl || videoFailed;
@@ -37,7 +36,7 @@ export default function VideoWithFallback({ videoUrl, mainImage, title }: VideoW
           loop
           onError={() => setVideoFailed(true)}
         >
-          <source src={modifiedVideoUrl} />
+          <source src={videoUrl} />
           <track kind="captions" />
         </video>
       )}
